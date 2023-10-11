@@ -4,6 +4,7 @@ import arrow from "../../assets/images/login/btn-arrow.svg";
 import Swiper from "../../components/swiper/swiper";
 import NudgeCard from "../../components/nudgeCard/nudgeCard";
 import CampaignCard from "../../components/campaignCard/CampaignCard";
+import OfferCard from "../../components/offerCard/offerCard";
 
 const Login = () => {
   return (
@@ -12,6 +13,7 @@ const Login = () => {
         <div className="login-top-container">
           <NudgeCard />
           <CampaignCard />
+          <OfferCard />
           <div className="login-carousel">
             <Swiper />
           </div>
