@@ -145,3 +145,13 @@
     align-items: center;
     gap: 10px;
 }
+
+.lineDivider{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.line{
+  width: 85%;
+  border-top: 1px solid #4B4B4B; /* Adjust the color and thickness as needed */
+}

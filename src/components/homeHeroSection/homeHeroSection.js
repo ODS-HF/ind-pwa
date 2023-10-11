@@ -77,6 +77,10 @@ const homeHeroSection = () => {
                                     </div>
                             </div>
                         </div>
+
+                        <div className='lineDivider'>
+                            <div className='line'/>
+                        </div>
                 </div>
                 
             </div>
