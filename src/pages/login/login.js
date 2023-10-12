@@ -3,20 +3,26 @@ import "./login.css";
 import arrow from "../../assets/images/login/btn-arrow.svg";
 import Swiper from "../../components/swiper/swiper";
 
-import NudgeCard from "../../components/nudgeCard/nudgeCard";
-import CampaignCard from "../../components/campaignCard/CampaignCard";
-import OfferCard from "../../components/offerCard/offerCard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/loader/loader";
 import MainService from "../../services/MainService";
 import { useNavigate } from "react-router-dom";
 import { verify } from "../../services/verifyOtp";
+import LoginPopup from "../../components/loginPopup/loginPopup";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const [loginVisiblity,setLoginVisiblity] = useState(true);
+  const toggleLoginVisiblity = () => {
+    setLoginVisiblity(!loginVisiblity);
+  }
+  const loginPopupStyle = {
+    visibility: loginVisiblity ? 'visible' : 'hidden',
+  };
+  
   const handleLogin = async () => {
     setLoading(true);
     const generateOtpResponse = await MainService.generateOTP({
@@ -83,7 +89,7 @@ const Login = () => {
               <div
                 className="login-button"
                 onClick={() => {
-                  handleLogin();
+                  toggleLoginVisiblity();
                 }}
               >
                 <button className="login-button-item" role="button">
@@ -106,7 +112,10 @@ const Login = () => {
               />
             </>
           )}
-          {/* <div className="login-popup"></div> */}
+          
+          <div className="login-popup" style={loginPopupStyle}>
+            <LoginPopup/>
+          </div>
         </div>
       </div>
     </div>
