@@ -6,7 +6,7 @@ import '../header/header.css'
 
 const header = () => {
   const data = {
-    rewardPoints: 100
+    rewardPoints: 1565
   }
 
   return (
