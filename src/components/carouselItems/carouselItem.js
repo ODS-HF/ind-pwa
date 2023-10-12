@@ -2,6 +2,8 @@ import React from "react";
 import "./carouselItem.css";
 import cardCarousel from "../../assets/images/login/card-carousel.svg";
 import shop from "../../assets/images/login/shop.svg";
+import offers from "../../assets/images/login/offer-cards.svg";
+import nudges from "../../assets/images/login/nudges.svg";
 
 export const CarouselItem1 = () => {
   return (
@@ -9,14 +11,19 @@ export const CarouselItem1 = () => {
       <div className="carousel-1-top-section">
         <img src={cardCarousel} className="carousel-item-1" />
       </div>
-      <div></div>
+      <div className="carousel-1-text-section">
+        <div className="carousel-text-2">
+          <span className="carousel-text-1">Welcome</span> to a card that puts{" "}
+          <span className="carousel-text-3">YOU</span> first
+        </div>
+      </div>
     </div>
   );
 };
 
 export const CarouselItem2 = () => {
   return (
-    <div className="carousel-body-1">
+    <div className="carousel-body-1" style={{ height: "90vh" }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
@@ -49,11 +56,43 @@ export const CarouselItem2 = () => {
         </div>
         <div className="sunrays-text-section">
           <div className="sunrays-text-section-internal">
-            <div className="sunrays-text-2">
-              <span className="sunrays-text-1">Discover</span> benefits waiting
+            <div className="carousel-text-2">
+              <span className="carousel-text-1">Discover</span> benefits waiting
               for you
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const CarouselItem3 = () => {
+  return (
+    <div className="carousel-body-1">
+      <div className="carousel-1-top-section">
+        <img src={offers} className="carousel-item-2" />
+      </div>
+      <div className="carousel-text-section">
+        <div className="carousel-text-2">
+          <span className="carousel-text-1">Explore</span> a world of exclusive
+          offers
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const CarouselItem4 = () => {
+  return (
+    <div className="carousel-body-1">
+      <div className="carousel-2-top-section">
+        <img src={nudges} className="carousel-item-3" />
+      </div>
+      <div className="carousel-3-text-section">
+        <div className="carousel-text-2">
+          <span className="carousel-text-1">Manage</span> your card like never
+          before
         </div>
       </div>
     </div>
