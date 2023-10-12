@@ -2,6 +2,7 @@ import React from "react";
 import "./home.css"
 import Header from "../../components/header/header";
 import HomeHeroSection from "../../components/homeHeroSection/homeHeroSection";
+import LoginPopup from "../../components/loginPopup/loginPopup";
 
 const Home = () => {
   return (<div className="wrapper">
@@ -9,6 +10,10 @@ const Home = () => {
     <div className="home-top-container">
       <Header/>
       <HomeHeroSection/>
+     
+        <LoginPopup/>
+
+     
     </div>
   </div>
 </div>
