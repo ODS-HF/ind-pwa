@@ -1,0 +1,94 @@
+.promotional-main-container {
+  /* height: 90vw;
+  max-width: 220px;
+  max-height: 360px;
+  width: 60vw;
+  background-color: aliceblue;
+  border-radius: 100% 100% 0 0; */
+  align-items: center;
+  background-image: linear-gradient(154deg, #ffffff10, hsla(0, 0%, 100%, 0));
+  border-radius: 130px 130px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 363px;
+  justify-content: center;
+  min-width: 251px;
+  width: 55%;
+  position: relative;
+  scroll-snap-align: center;
+
+  border-top: 0.2px solid #fafafa80;
+  border-left: 0.2px solid #fafafa80;
+  border-right: 0.1px solid #fafafa20;
+  border-bottom: 0.1px solid #fafafa20;
+}
+.promotional-main-container-internal {
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 130px 130px 12px 12px;
+  content: "";
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  margin-left: 6px;
+  min-height: 97%;
+  position: relative;
+  top: 1px;
+  width: 241px;
+  background-color: black;
+}
+.promotional-img-section {
+  margin-top: 10px;
+  position: relative;
+}
+.promotional-img-banner {
+  border: 3.27px solid #eee;
+  border-radius: 50%;
+  max-height: 200px;
+  min-height: 200px;
+  object-fit: cover;
+  width: 200px;
+}
+.promotional-img-logo {
+  border: 2px solid #fafafa;
+  border-radius: 50%;
+  bottom: 0;
+  height: 60px;
+  object-fit: cover;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 60px;
+}
+.promotional-text-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.promotional-text-title {
+  width: 70%;
+  color: #f8f8f8;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 120% */
+  text-align: center;
+}
+.promotional-text-desc {
+  width: 70%;
+  color: var(--base-white, #f5f5f5);
+  text-align: center;
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 18.2px */
+  text-align: center;
+}

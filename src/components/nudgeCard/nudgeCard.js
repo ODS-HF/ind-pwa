@@ -1,6 +1,6 @@
 import "./nudgeCard.css";
 import Progress from "../../assets/images/nudgecard/Progress states.png";
-import btnImg from "../../assets/images/nudgecard/Frame 427320406.png";
+import btnImg from "../../assets/images/nudgecard/blackArrow.svg";
 
 const NudgeCard = () => {
   return (

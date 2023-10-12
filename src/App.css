@@ -6,3 +6,19 @@
   justify-content: center;
   width: 100%;
 }
+
+.Toastify__toast {
+  border-radius: 32px !important;
+  box-shadow: rgba(255, 255, 255, 0.74) 0px 3px 8px;
+  border-top: 0.4px solid #fff;
+}
+/* .Toastify__progress-bar {
+  display: hidden;
+} */
+.Toastify__close-button {
+  display: none;
+}
+:root {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #000000;
+}
