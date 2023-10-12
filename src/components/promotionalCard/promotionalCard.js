@@ -4,6 +4,7 @@ import campaignCardBackground from "../../assets/images/campaigncard/CampaignCar
 import banner from "../../assets/images/promotionalCard/banner1.png";
 import logo from "../../assets/images/promotionalCard/logo1.png";
 import bg from "../../assets/images/promotionalCard/bg.svg";
+import arrow from "../../assets/images/nudgecard/blackArrow.svg";
 
 const PromotionalCard = () => {
   return (
@@ -17,10 +18,16 @@ const PromotionalCard = () => {
           <img src={logo} className="promotional-img-logo" />
         </div>
         <div className="promotional-text-section">
-          <div className="promotional-text-title"></div>
-          <div className="promotional-text-desc"></div>
+          <div className="promotional-text-title">
+            Flat 21% off + ₹1000 Cashback
+          </div>
+          <div className="promotional-text-desc">
+            on all car bookings from Zoom Car
+          </div>
         </div>
-        <div></div>
+        <div className="promotional-action-section">
+          <img src={arrow} />
+        </div>
       </div>
     </div>
   );

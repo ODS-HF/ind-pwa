@@ -9,7 +9,7 @@ import travel from "../../assets/images/home/footerTravel.svg";
 import footerLogo from "../../assets/images/home/footerLogo.svg";
 import arrowRectangleWhite from "../../assets/images/homeHeroSection/arrowRectangleWhite.svg";
 
-const HomeFooterSection = () => {
+const HomeFooterSection = (props) => {
   return (
     <div className="home-footer-main-container">
       <div className="home-footer-top-section">
@@ -37,7 +37,7 @@ const HomeFooterSection = () => {
               <img src={food} />
             </div>
           </div>
-          <div className="home-footer-top-action">
+          <div className="home-footer-top-action" onClick={() => props.click()}>
             <div className="view-all-container">
               <div className="view-all-button">
                 <div className="view-text">all</div>

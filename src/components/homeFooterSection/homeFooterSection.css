@@ -43,6 +43,7 @@
 
 .home-footer-top-action {
   margin-top: 5vh;
+  cursor: pointer;
 }
 .home-footer-bottom-section {
   width: 100%;

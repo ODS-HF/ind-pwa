@@ -11,6 +11,7 @@
   border-radius: 32px !important;
   box-shadow: rgba(255, 255, 255, 0.74) 0px 3px 8px;
   border-top: 0.4px solid #fff;
+  bottom: 24px;
 }
 /* .Toastify__progress-bar {
   display: hidden;

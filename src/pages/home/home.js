@@ -22,6 +22,18 @@ const Home = () => {
       progress: false,
       theme: "dark",
     });
+  const notifyComingSoon = (msg) =>
+    toast("Coming Soon!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: false,
+      theme: "dark",
+    });
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (!localStorage.getItem("accountId") && !localStorage.getItem("token")) {
@@ -62,12 +74,14 @@ const Home = () => {
           ) : (
             <>
               <Header />
-              <HomeHeroSection />
+              <HomeHeroSection click={notifyComingSoon} />
               <HomeOfferSection />
-              <HomeFooterSection />
+              <HomeFooterSection click={notifyComingSoon} />
             </>
           )}
-          <ToastContainer />
+          <div style={{ width: "90%" }}>
+            <ToastContainer />
+          </div>
         </div>
       </div>
     </div>

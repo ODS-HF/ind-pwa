@@ -5,10 +5,28 @@ import card from "../../assets/images/homeHeroSection/Rectangle.svg";
 import arrowRectangle from "../../assets/images/homeHeroSection/arrowRectangle.svg";
 import divider from "../../assets/images/homeHeroSection/Divider.svg";
 import arrowRectangleWhite from "../../assets/images/homeHeroSection/arrowRectangleWhite.svg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import NudgeCard from "../nudgeCard/nudgeCard";
 
-const homeHeroSection = () => {
+const homeHeroSection = (props) => {
   const data = {
     rewardPoint: 12381,
+  };
+  const settings = {
+    dots: false,
+    infinite: false,
+    fade: false,
+    speed: 500,
+    slidesToShow: 1.25,
+    slidesToScroll: 1,
+    lazyLoad: true,
+    arrows: false,
+    className: "swiper",
+    // beforeChange: (o, n) => {
+    //   setCurrentSlide(n);
+    // },
   };
 
   return (
@@ -32,7 +50,7 @@ const homeHeroSection = () => {
 
         <div className="heroSection-body">
           <div className="card-container">
-            <div className="your-card-button">
+            <div className="your-card-button" onClick={() => props.click()}>
               <div className="your-text">your</div>
 
               <div className="card-text">card</div>
@@ -49,9 +67,19 @@ const homeHeroSection = () => {
           </div>
 
           <div className="carouselAndViewbutton">
-            <div className="carousel-card">[ Place holder for carousel ]</div>
+            <div>
+              <div style={{ marginLeft: "0px" }}>
+                <Slider {...settings}>
+                  {["", "", ""].map((item, index) => (
+                    <div>
+                      <NudgeCard />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+            </div>
 
-            <div className="view-all-container">
+            <div className="view-all-container" onClick={() => props.click()}>
               <div className="view-all-button">
                 <div className="view-text">view</div>
 
