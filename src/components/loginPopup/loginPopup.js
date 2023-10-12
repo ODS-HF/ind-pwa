@@ -2,21 +2,23 @@ import React from 'react'
 import './loginPopup.css'
 import cardTiny from '../../assets/images/home/cardGrad.svg'
 import arrowRectangle from '../../assets/images/homeHeroSection/arrowRectangle.svg'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 const LoginPopup = () => {
   
   const [mobileNumber, setMobileNumber ] = useState('');
   const [lastFourDigit,setLastFourDigit] = useState('');
-
+  
   const handleMobileNumberChange = (e) =>{
     if((e.target.value.length<=10 && Number(e.target.value)) || e.target.value === "")
-    setMobileNumber(e.target.value)
+        setMobileNumber(e.target.value)
+    
   }
 
   const handleLastFourDigit = (e) =>{
     if((e.target.value.length<= 4 && Number(e.target.value)) || e.target.value === "")
     setLastFourDigit(e.target.value)
+    
   }
 
   return (
@@ -88,7 +90,7 @@ const LoginPopup = () => {
             </div>
         </div>
 
-        <div className='loginCTA'>
+        <div className='loginCTA' style={{background: (mobileNumber.length === 10 && lastFourDigit.length ===4)? '#FFF' : 'rgb(255 255 255 / 50%)'}}>
            <div className='loginCTA-button'>
                 <div className='loginCTA-text'>
                         confirm
