@@ -13,7 +13,12 @@ import arrowBlack from "../../assets/images/homeHeroSection/arrowBlack.svg";
 import cardBottomBg from "../../assets/images/offerCard/cardBottomBg.svg";
 import CampaignCard from "../campaignCard/CampaignCard";
 import OfferCard from "../offerCard/offerCard";
-import { Swiper, SwiperSlide } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation } from "swiper";
+// import "swiper/css";
+// import "swiper/css/effect-coverflow";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
 
 const HomeOfferSection = (props) => {
   const promotionCardSettings = {
@@ -25,7 +30,36 @@ const HomeOfferSection = (props) => {
     slidesToScroll: 1,
     lazyLoad: true,
     arrows: false,
-    className: "swiper",
+    responsive: [
+      {
+        breakpoint: 430,
+        settings: {
+          slidesToShow: 1.4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1.3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 380,
+        settings: {
+          slidesToShow: 1.2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
     // beforeChange: (o, n) => {
     //   setCurrentSlide(n);
     // },
@@ -35,11 +69,39 @@ const HomeOfferSection = (props) => {
     infinite: false,
     fade: false,
     speed: 500,
-    slidesToShow: 2.1,
+    slidesToShow: 2.2,
     slidesToScroll: 1,
-    lazyLoad: true,
     arrows: false,
-    className: "swiper",
+    responsive: [
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 2.15,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 420,
+        settings: {
+          slidesToShow: 1.95,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 390,
+        settings: {
+          slidesToShow: 1.8,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 330,
+        settings: {
+          slidesToShow: 1.6,
+          slidesToScroll: 1,
+        },
+      },
+    ],
     // beforeChange: (o, n) => {
     //   setCurrentSlide(n);
     // },
@@ -50,11 +112,29 @@ const HomeOfferSection = (props) => {
     fade: false,
     speed: 500,
     centerMode: true,
-    slidesToShow: 1,
+    slidesToShow: 1.5,
     slidesToScroll: 1,
-    lazyLoad: true,
+    lazyLoad: false,
     arrows: false,
-    className: "swiper",
+    responsive: [
+      {
+        breakpoint: 390,
+        settings: {
+          slidesToShow: 1.4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1.2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+    // className: "swiper",
+    // autoplay: true,
+    // autoplaySpeed: 2000,
     // beforeChange: (o, n) => {
     //   setCurrentSlide(n);
     // },

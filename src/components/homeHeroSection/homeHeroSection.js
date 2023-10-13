@@ -19,11 +19,41 @@ const homeHeroSection = (props) => {
     infinite: false,
     fade: false,
     speed: 500,
-    slidesToShow: 1.25,
+    slidesToShow: 1.35,
     slidesToScroll: 1,
     lazyLoad: true,
     arrows: false,
     className: "swiper",
+    responsive: [
+      {
+        breakpoint: 460,
+        settings: {
+          slidesToShow: 1.25,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 420,
+        settings: {
+          slidesToShow: 1.15,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 390,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 330,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
     // beforeChange: (o, n) => {
     //   setCurrentSlide(n);
     // },
@@ -124,7 +154,7 @@ const homeHeroSection = (props) => {
                 <Slider {...settings}>
                   {props.nudges.map((item, index) => (
                     <div>
-                      <NudgeCard />
+                      <NudgeCard data={item} />
                     </div>
                   ))}
                 </Slider>
