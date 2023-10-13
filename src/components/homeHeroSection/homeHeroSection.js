@@ -98,7 +98,6 @@ const homeHeroSection = (props) => {
 
             <div className="rewardPoint-name">Reward Points</div>
           </div>
-
         </div>
 
         <div className="heroSection-body">
@@ -123,7 +122,7 @@ const homeHeroSection = (props) => {
             <div>
               <div style={{ marginLeft: "0px" }}>
                 <Slider {...settings}>
-                  {["", "", ""].map((item, index) => (
+                  {props.nudges.map((item, index) => (
                     <div>
                       <NudgeCard />
                     </div>

@@ -59,7 +59,7 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
-
+  cursor: pointer;
   top: 25%;
   left: 50%;
   transform: translateX(-50%);
@@ -148,24 +148,25 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
-.view-all-container{
-    display: flex;
-    padding: 0px 10px;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.view-all-container {
+  display: flex;
+  padding: 0px 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.lineDivider{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.lineDivider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-.line{
+.line {
   width: 85%;
-  border-top: 1px solid #4B4B4B; /* Adjust the color and thickness as needed */
+  border-top: 1px solid #4b4b4b; /* Adjust the color and thickness as needed */
 }
 .divider-container {
   width: 100%;

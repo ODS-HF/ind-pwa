@@ -10,9 +10,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import arrowRectangleWhite from "../../assets/images/homeHeroSection/arrowRectangleWhite.svg";
 import arrowBlack from "../../assets/images/homeHeroSection/arrowBlack.svg";
+import cardBottomBg from "../../assets/images/offerCard/cardBottomBg.svg";
 import CampaignCard from "../campaignCard/CampaignCard";
+import OfferCard from "../offerCard/offerCard";
+import { Swiper, SwiperSlide } from "swiper";
 
-const HomeOfferSection = () => {
+const HomeOfferSection = (props) => {
   const promotionCardSettings = {
     dots: false,
     infinite: false,
@@ -33,6 +36,21 @@ const HomeOfferSection = () => {
     fade: false,
     speed: 500,
     slidesToShow: 2.1,
+    slidesToScroll: 1,
+    lazyLoad: true,
+    arrows: false,
+    className: "swiper",
+    // beforeChange: (o, n) => {
+    //   setCurrentSlide(n);
+    // },
+  };
+  const offerCardSettings = {
+    dots: false,
+    infinite: true,
+    fade: false,
+    speed: 500,
+    centerMode: true,
+    slidesToShow: 1,
     slidesToScroll: 1,
     lazyLoad: true,
     arrows: false,
@@ -83,20 +101,20 @@ const HomeOfferSection = () => {
         <div className="home-offer-section-contine-3-body">
           <div style={{ marginLeft: "24px" }}>
             <Slider {...campaignCardSettings}>
-              {["", "", ""].map((item, index) => (
+              {props.campaignBenefits.map((item, index) => (
                 <div style={{ marginLeft: index === 0 ? "24px" : "0px" }}>
-                  <CampaignCard />
+                  <CampaignCard data={item} />
                 </div>
               ))}
             </Slider>
           </div>
         </div>
         <div className="home-offer-section-continer-1-bottom">
-          <div className="view-all-container">
+          <div className="view-all-container" onClick={() => props.click()}>
             <div className="view-all-button">
-              <div className="view-text">view</div>
+              <div className="view-text">all</div>
 
-              <div className="all-text">all</div>
+              <div className="all-text">exclusive</div>
 
               <div className="arrowRectangleWhite">
                 <img src={arrowRectangleWhite} alt="arr" />
@@ -143,18 +161,26 @@ const HomeOfferSection = () => {
           </div>
         </div>
         <div className="home-offer-section-contine-3-body">
-          <div style={{ marginLeft: "24px" }}>
-            <Slider {...promotionCardSettings}>
-              {["", "", ""].map((item, index) => (
+          <div
+            style={{
+              marginLeft: "24px",
+              // backgroundImage: `url(${cardBottomBg})`,
+            }}
+          >
+            <Slider {...offerCardSettings}>
+              {props.offersBenefits.map((item, index) => (
                 <div style={{ marginLeft: index === 0 ? "24px" : "0px" }}>
-                  <PromotionalCard />
+                  <OfferCard data={item} />
                 </div>
               ))}
             </Slider>
+            <div>
+              <img src={cardBottomBg} />
+            </div>
           </div>
         </div>
         <div className="home-offer-section-continer-1-bottom">
-          <div className="view-all-container">
+          <div className="view-all-container" onClick={() => props.click()}>
             <div className="view-all-button-white">
               <div className="view-text-black">all</div>
 
@@ -242,9 +268,9 @@ const HomeOfferSection = () => {
         <div className="home-offer-section-contine-3-body">
           <div style={{ marginLeft: "24px" }}>
             <Slider {...promotionCardSettings}>
-              {["", "", ""].map((item, index) => (
+              {props.promotionBenefits.map((item, index) => (
                 <div style={{ marginLeft: index === 0 ? "24px" : "0px" }}>
-                  <PromotionalCard />
+                  <PromotionalCard data={item} />
                 </div>
               ))}
             </Slider>
@@ -267,7 +293,10 @@ const HomeOfferSection = () => {
                   Provide preferences for offers{" "}
                 </div>
               </div>
-              <div className="home-offer-section-contine-3-bottom-internal-action">
+              <div
+                className="home-offer-section-contine-3-bottom-internal-action"
+                onClick={() => props.click()}
+              >
                 <img src={btnImg} />
               </div>
             </div>
