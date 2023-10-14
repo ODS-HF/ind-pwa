@@ -10,8 +10,10 @@ const NudgeCard = (props) => {
         <div className="nudgeCard-icon-container">
           <img
             src={
-              JSON.parse(props?.data?.displayOptions?.nudgeDetails)
-                ?.illustrationUrl || Progress
+              props?.data?.displayOptions?.nudgeDetails
+                ? JSON.parse(props?.data?.displayOptions?.nudgeDetails)
+                    ?.illustrationUrl
+                : Progress
             }
             height={"48px"}
             width={"48px"}
@@ -20,13 +22,16 @@ const NudgeCard = (props) => {
         </div>
         <div className="nudgeCard-text-content">
           <h1 className="nudgeCard-main-content">
-            {JSON.parse(props?.data?.displayOptions?.nudgeDetails)?.title ||
-              "Spend Statement, May 2023"}
+            {props?.data?.displayOptions?.nudgeDetails
+              ? JSON.parse(props?.data?.displayOptions?.nudgeDetails)?.title
+              : "Spend Statement, May 2023"}
           </h1>
           <div className="nudgeCard-sub-content">
             <p className="nudgeCard-p1">
-              {JSON.parse(props?.data?.displayOptions?.nudgeDetails)
-                ?.description || "Win 400 cashback"}
+              {props?.data?.displayOptions?.nudgeDetails
+                ? JSON.parse(props?.data?.displayOptions?.nudgeDetails)
+                    ?.description
+                : "Win 400 cashback"}
             </p>
 
             {moment(props?.data?.endDate).diff(moment(), "d") < 5 &&

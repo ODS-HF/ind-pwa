@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./homeOfferSection.css";
 import offerSectionbottomBg from "../../assets/images/home/offerSectionbottomBg.svg";
 import offerSectionbottomExtraCardImg from "../../assets/images/home/offerSectionbottomExtraCardImg.svg";
@@ -15,6 +15,10 @@ import CampaignCard from "../campaignCard/CampaignCard";
 import OfferCard from "../offerCard/offerCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation } from "swiper";
+import {
+  StackedCarousel,
+  ResponsiveContainer,
+} from "react-stacked-center-carousel";
 // import "swiper/css";
 // import "swiper/css/effect-coverflow";
 // import "swiper/css/pagination";
@@ -112,22 +116,22 @@ const HomeOfferSection = (props) => {
     fade: false,
     speed: 500,
     centerMode: true,
-    slidesToShow: 1.5,
-    slidesToScroll: 1,
+    slidesToShow: 1.58,
+    slidesToScroll: 2,
     lazyLoad: false,
     arrows: false,
     responsive: [
       {
         breakpoint: 390,
         settings: {
-          slidesToShow: 1.4,
+          slidesToShow: 1.58,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 360,
         settings: {
-          slidesToShow: 1.2,
+          slidesToShow: 1.4,
           slidesToScroll: 1,
         },
       },
@@ -135,10 +139,28 @@ const HomeOfferSection = (props) => {
     // className: "swiper",
     // autoplay: true,
     // autoplaySpeed: 2000,
-    // beforeChange: (o, n) => {
-    //   setCurrentSlide(n);
-    // },
+    beforeChange: (o, n) => {
+      console.log(o, n, "o,n", props.offersBenefits.length);
+      if (n === props.offersBenefits.length - 1) {
+        setNextSlide(1);
+        setCurrentSlide(0);
+        setPrevSlide(props.offersBenefits.length - 1);
+      } else if (n === props.offersBenefits.length - 2) {
+        setNextSlide(0);
+        setCurrentSlide(props.offersBenefits.length - 1);
+        setPrevSlide(n);
+      } else {
+        setNextSlide(n + 2);
+        setCurrentSlide(n + 1);
+        setPrevSlide(n);
+      }
+    },
   };
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [prevSlide, setPrevSlide] = useState(0);
+  const [nextSlide, setNextSlide] = useState(2);
+  const ref = useRef(StackedCarousel);
+  console.log(prevSlide, currentSlide, nextSlide);
   return (
     <div className="home-offer-section-main-continer">
       <div className="home-offer-section-continer-1">
@@ -243,20 +265,42 @@ const HomeOfferSection = (props) => {
         <div className="home-offer-section-contine-3-body">
           <div
             style={{
-              marginLeft: "24px",
-              // backgroundImage: `url(${cardBottomBg})`,
+              position: "relative",
             }}
           >
-            <Slider {...offerCardSettings}>
+            {/* <Slider {...offerCardSettings}>
               {props.offersBenefits.map((item, index) => (
                 <div style={{ marginLeft: index === 0 ? "24px" : "0px" }}>
-                  <OfferCard data={item} />
+                  <OfferCard
+                    data={item}
+                    currentSlide={currentSlide}
+                    prevSlide={prevSlide}
+                    nextSlide={nextSlide}
+                    index={index}
+                  />
                 </div>
               ))}
-            </Slider>
-            <div>
-              <img src={cardBottomBg} />
-            </div>
+            </Slider> */}
+            <ResponsiveContainer
+              carouselRef={ref}
+              render={(width, carouselRef) => {
+                return (
+                  <StackedCarousel
+                    ref={carouselRef}
+                    slideComponent={OfferCard}
+                    slideWidth={150}
+                    carouselWidth={width}
+                    data={props.offersBenefits}
+                    maxVisibleSlide={5}
+                    // customScales={[1, 0.85, 0.7]}
+                    transitionTime={450}
+                  />
+                );
+              }}
+            />
+          </div>
+          <div className="home-offer-section-continer-2-offer-highlighter">
+            <img src={cardBottomBg} />
           </div>
         </div>
         <div className="home-offer-section-continer-1-bottom">

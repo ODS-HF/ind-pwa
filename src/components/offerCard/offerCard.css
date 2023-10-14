@@ -1,7 +1,7 @@
 .offercard-wrapper {
   border-radius: 4px;
   border: 0.4px solid #eaeaea50;
-
+  transform: rotateX(15deg);
   width: 166px;
   display: flex;
   align-items: center;

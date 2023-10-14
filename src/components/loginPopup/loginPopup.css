@@ -177,7 +177,6 @@ input:focus {
   display: flex;
   align-items: center;
   gap: 4px;
-  cursor: pointer;
 }
 
 .loginCTA {
@@ -189,4 +188,5 @@ input:focus {
   position: relative;
   border-radius: 120px;
   background: #fff;
+  cursor: pointer;
 }

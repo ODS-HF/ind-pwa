@@ -14,10 +14,27 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
 
-  const [nudgeResponse, setNudgeResponse] = useState([]);
-  const [campaignBenefitResponse, setCampaignBenefitResponse] = useState([]);
-  const [offersBenefitResponse, setOffersBenefitResponse] = useState([]);
-  const [promotionBenefitResponse, setpPomotionBenefitResponse] = useState([]);
+  const [nudgeResponse, setNudgeResponse] = useState(["", "", "", "", ""]);
+  const [campaignBenefitResponse, setCampaignBenefitResponse] = useState([
+    "",
+    "",
+    "",
+  ]);
+  const [offersBenefitResponse, setOffersBenefitResponse] = useState([
+    "",
+    "",
+    "",
+    "",
+  ]);
+  const [promotionBenefitResponse, setpPomotionBenefitResponse] = useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
   const [loading, setLoading] = useState(true);
 
   const notify = (msg) =>
@@ -55,6 +72,9 @@ const Home = () => {
     }
     (async () => {
       try {
+        // setTimeout(() => {
+        //   setLoading(false);
+        // }, [2000]);
         console.log(localStorage.getItem("token"));
         const nudgeRequest = MainService.fetchNudges(
           localStorage.getItem("accountId"),
@@ -119,7 +139,7 @@ const Home = () => {
           setpPomotionBenefitResponse(promotionBenefitResponse.data);
           setTimeout(() => {
             setLoading(false);
-          }, [1000]);
+          }, [2000]);
         } else {
           console.log(nudgeResponse.data);
           nudgeResponse.status

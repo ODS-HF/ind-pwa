@@ -4,6 +4,7 @@ import cardTiny from "../../assets/images/home/cardGrad.svg";
 import arrowRectangle from "../../assets/images/homeHeroSection/arrowRectangle.svg";
 import { useState, useEffect } from "react";
 import Lottie from "react-lottie";
+import { useSpring, animated } from "react-spring";
 import anim from "../../assets/images/loader/spinner2.json";
 
 const LoginPopup = (props) => {
@@ -31,8 +32,24 @@ const LoginPopup = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const openOptions = useSpring({
+    display: "flex",
+    padding: "0px 16px 24px 16px",
+    flexDirection: "column",
+    gap: "32px",
+
+    position: "absolute",
+    bottom: props.show ? -0 : -360,
+    width: "100%",
+    boxSizing: "border-box",
+    borderRadius: "24px",
+    borderTop: "1px solid #9a9a9a",
+    background: "#141414",
+  });
+  console.log(window.innerHeight);
   return (
-    <div className="loginModal">
+    <animated.div style={openOptions}>
+      {/* <div className="loginModal" > */}
       <div className="loginFrame">
         <div className="dividerLine">
           <svg
@@ -106,14 +123,17 @@ const LoginPopup = (props) => {
 
       <div
         className="loginCTA"
+        onClick={() => (props.loading ? null : props.otpGenerate())}
         style={{
           background:
-            props.mobileNumber.length === 10 && props.lastFourDigit.length === 4
+            props.mobileNumber.length === 10 &&
+            props.lastFourDigit.length === 4 &&
+            !props.loading
               ? "#FFF"
               : "rgb(255 255 255 / 50%)",
         }}
       >
-        <div className="loginCTA-button" onClick={() => props.otpGenerate()}>
+        <div className="loginCTA-button">
           <div className="loginCTA-text">confirm</div>
 
           <div className="loginCTA-arrow">
@@ -122,11 +142,12 @@ const LoginPopup = (props) => {
         </div>
         {props.loading && (
           <div style={{ height: "24px", position: "absolute", right: "24px" }}>
-            <Lottie options={defaultOptions} width={"100%"} />
+            <Lottie options={defaultOptions} width={"24px"} />
           </div>
         )}
       </div>
-    </div>
+      {/* </div> */}
+    </animated.div>
   );
 };
 

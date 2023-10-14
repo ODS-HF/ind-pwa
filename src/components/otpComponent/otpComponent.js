@@ -4,6 +4,7 @@ import OtpInput from "react-otp-input";
 import arrowRectangle from "../../assets/images/homeHeroSection/arrowRectangle.svg";
 import Lottie from "react-lottie";
 import anim from "../../assets/images/loader/spinner2.json";
+import { useSpring, animated } from "react-spring";
 
 const OtpComponent = (props) => {
   const mobileNumber = "9988776655";
@@ -18,8 +19,23 @@ const OtpComponent = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const openOptions = useSpring({
+    display: "flex",
+    padding: "0px 16px 24px 16px",
+    flexDirection: "column",
+    gap: "32px",
+
+    position: "absolute",
+    bottom: props.show ? 396 : 0,
+    width: "100%",
+    boxSizing: "border-box",
+    borderRadius: "24px",
+    borderTop: "1px solid #9a9a9a",
+    background: "#141414",
+  });
   return (
-    <div className="otpModal">
+    <animated.div style={openOptions}>
+      {/* <div className="otpModal"> */}
       <div className="otpFrame">
         <div className="dividerLine">
           <svg
@@ -76,18 +92,28 @@ const OtpComponent = (props) => {
         </div>
       </div>
 
-      <div className="CTA-frame" onClick={() => props.verify()}>
+      <div
+        className="CTA-frame"
+        onClick={() => (props.loading ? null : props.verify())}
+        style={{
+          background:
+            props.otp.length === 6 && !props.loading
+              ? "#FFF"
+              : "rgb(255 255 255 / 50%)",
+        }}
+      >
         <div className="CTA-text">confirm</div>
         <div className="CTA-arrow">
           <img src={arrowRectangle} alt="arrow" />
         </div>
         {props.loading && (
           <div style={{ height: "24px", position: "absolute", right: "24px" }}>
-            <Lottie options={defaultOptions} width={"100%"} />
+            <Lottie options={defaultOptions} width={"24px"} />
           </div>
         )}
       </div>
-    </div>
+      {/* </div> */}
+    </animated.div>
   );
 };
 

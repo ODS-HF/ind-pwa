@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./login.css";
 import arrow from "../../assets/images/login/btn-arrow.svg";
 import Swiper from "../../components/swiper/swiper";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/loader/loader";
@@ -26,8 +25,9 @@ const Login = () => {
     setLoginVisiblity(!loginVisiblity);
   };
   const loginPopupStyle = {
-    visibility: loginVisiblity ? "visible" : "hidden",
+    visibility: loginVisiblity ? "visible" : "vissible",
   };
+
   const otpGenerate = async () => {
     if (!loading) {
       console.log("adda");
@@ -181,8 +181,10 @@ const Login = () => {
               mobileNumber={mobileNumber}
               otpGenerate={otpGenerate}
               loading={loading}
+              show={loginVisiblity}
             />
           </div>
+
           {otpComponentShow && (
             <div className="login-popup">
               <OtpComponent
@@ -191,6 +193,7 @@ const Login = () => {
                 otp={otp}
                 setOtp={setOtp}
                 loading={loading}
+                show={otpComponentShow}
               />
             </div>
           )}
