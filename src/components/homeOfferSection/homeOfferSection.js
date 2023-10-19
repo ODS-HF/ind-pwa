@@ -14,11 +14,16 @@ import cardBottomBg from "../../assets/images/offerCard/cardBottomBg.svg";
 import CampaignCard from "../campaignCard/CampaignCard";
 import OfferCard from "../offerCard/offerCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation } from "swiper";
-import {
-  StackedCarousel,
-  ResponsiveContainer,
-} from "react-stacked-center-carousel";
+import ecllipse from "../../assets/images/offerCard/Ellipse.svg"
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
+// import required modules
+import { EffectCoverflow, Pagination } from 'swiper/modules';
+
 // import "swiper/css";
 // import "swiper/css/effect-coverflow";
 // import "swiper/css/pagination";
@@ -73,39 +78,39 @@ const HomeOfferSection = (props) => {
     infinite: false,
     fade: false,
     speed: 500,
-    slidesToShow: 2.2,
+    slidesToShow: 2.02,
     slidesToScroll: 1,
     arrows: false,
-    responsive: [
-      {
-        breakpoint: 450,
-        settings: {
-          slidesToShow: 2.15,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 420,
-        settings: {
-          slidesToShow: 1.95,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 390,
-        settings: {
-          slidesToShow: 1.8,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 330,
-        settings: {
-          slidesToShow: 1.6,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 450,
+    //     settings: {
+    //       slidesToShow: 2.15,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 420,
+    //     settings: {
+    //       slidesToShow: 1.95,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 390,
+    //     settings: {
+    //       slidesToShow: 1.8,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 330,
+    //     settings: {
+    //       slidesToShow: 1.6,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
     // beforeChange: (o, n) => {
     //   setCurrentSlide(n);
     // },
@@ -156,10 +161,10 @@ const HomeOfferSection = (props) => {
       }
     },
   };
+
   const [currentSlide, setCurrentSlide] = useState(1);
   const [prevSlide, setPrevSlide] = useState(0);
   const [nextSlide, setNextSlide] = useState(2);
-  const ref = useRef(StackedCarousel);
   console.log(prevSlide, currentSlide, nextSlide);
   return (
     <div className="home-offer-section-main-continer">
@@ -226,7 +231,7 @@ const HomeOfferSection = (props) => {
         </div>
       </div>
       <div className="home-offer-section-continer-2">
-        <div className="home-offer-section-contine-3-header">
+        <div className="home-offer-section-contine-3-header" style={{paddingTop: "40px"}}>
           <div
             className="home-offer-section-contine-3-header-top"
             style={{
@@ -263,11 +268,7 @@ const HomeOfferSection = (props) => {
           </div>
         </div>
         <div className="home-offer-section-contine-3-body">
-          <div
-            style={{
-              position: "relative",
-            }}
-          >
+          
             {/* <Slider {...offerCardSettings}>
               {props.offersBenefits.map((item, index) => (
                 <div style={{ marginLeft: index === 0 ? "24px" : "0px" }}>
@@ -281,7 +282,7 @@ const HomeOfferSection = (props) => {
                 </div>
               ))}
             </Slider> */}
-            <ResponsiveContainer
+            {/* <ResponsiveContainer
               carouselRef={ref}
               render={(width, carouselRef) => {
                 return (
@@ -297,10 +298,36 @@ const HomeOfferSection = (props) => {
                   />
                 );
               }}
-            />
-          </div>
+            /> */}
+
+      <Swiper
+        effect={'coverflow'}
+        centeredSlides={true}
+        slidesPerView={2}
+        
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 200,
+          modifier: 1,
+          slideShadows: false,
+        }}
+        modules={[EffectCoverflow]}
+        className="coverflowSwiper"
+      >
+        
+        {props.offersBenefits.map((data, index) => (
+                    <SwiperSlide key={index}>
+                      <OfferCard data={data} />
+                    </SwiperSlide>
+                  ))}
+        
+        
+      </Swiper>
+
           <div className="home-offer-section-continer-2-offer-highlighter">
-            <img src={cardBottomBg} />
+            <img src={cardBottomBg} style={{    marginLeft: "-20px",
+    marginTop: "-20px"}} />
           </div>
         </div>
         <div className="home-offer-section-continer-1-bottom">
@@ -321,7 +348,7 @@ const HomeOfferSection = (props) => {
         className="home-offer-section-continer-3"
         style={{ backgroundImage: `url(${offerSectionbottomBg})` }}
       >
-        <div className="home-offer-section-contine-3-header">
+        <div className="home-offer-section-contine-3-header" style={{paddingTop:"60px"}}>
           <div className="home-offer-section-contine-3-header-top">
             offers{" "}
             <svg
@@ -423,7 +450,11 @@ const HomeOfferSection = (props) => {
               >
                 <img src={btnImg} />
               </div>
+              <div className="ecllipse">
+                   <img src={ecllipse}/>
+              </div>
             </div>
+            
           </div>
         </div>
       </div>

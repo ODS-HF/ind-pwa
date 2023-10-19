@@ -26,7 +26,7 @@ const OtpComponent = (props) => {
     gap: "32px",
 
     position: "absolute",
-    bottom: props.show ? 396 : 0,
+    bottom: props.show ? 0 : -400,
     width: "100%",
     boxSizing: "border-box",
     borderRadius: "24px",
@@ -58,7 +58,7 @@ const OtpComponent = (props) => {
           <div className="otpText">verify with OTP</div>
 
           <div className="otpDescription">
-            Please enter the 4 digit code sent to +91 &nbsp;
+            Please enter the 6 digit code sent to +91 &nbsp;
             <span className="mobileSecureDisplay">{maskedMobileNumber}</span>
           </div>
         </div>
@@ -78,16 +78,17 @@ const OtpComponent = (props) => {
             <div className="otp-inputField-description-text1">
               Didn’t recieve a code?
             </div>
-            <div className="otp-inputField-description-text2">Resend SMS</div>
+            <div className="otp-inputField-description-text2" onClick={() => {props.setPrevShow(true) 
+             props.setShow(false)}}>Resend SMS</div>
           </div>
         </div>
 
         <div className="otpContainer-footerRegion">
           By entering OTP and proceeding, I agree to the <br />
-          <span className="underline">Terms of Use</span>
+          <span className="underline" onClick={() => {window.open("https://www.indusind.com/in/en/personal.html#")}}>Terms of Use</span>
           &nbsp; and &nbsp;
-          <span className="underline">Privacy Policy</span>
-          associated with IndusInd <br />
+          <span className="underline" onClick={() => {window.open("https://www.indusind.com/in/en/personal.html#")}}>Privacy Policy</span>
+          {" "}associated with IndusInd <br />
           Bank Credit Card setup
         </div>
       </div>

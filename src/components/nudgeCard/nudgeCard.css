@@ -1,13 +1,15 @@
 .nudgecard-wrapper {
   display: flex;
+  padding: 16px;
   align-items: center;
+  gap: 12px;
   border-radius: 50px;
   background: linear-gradient(
     90deg,
     #242424 57.56%,
     rgba(29, 29, 29, 0) 123.69%
   );
-  width: 296px;
+  
   padding: 16px;
   align-items: center;
   justify-content: space-between;
@@ -63,6 +65,7 @@
   line-height: 120%;
   opacity: 0.57;
   margin: 0;
+  text-align: start;
 }
 
 .nudgeCard-p2 {
@@ -85,4 +88,5 @@
   line-height: 130%;
   gap: 8px;
   margin: 0;
+  text-align: start;
 }

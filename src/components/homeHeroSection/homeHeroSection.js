@@ -7,61 +7,27 @@ import divider from "../../assets/images/homeHeroSection/Divider.svg";
 import arrowRectangleWhite from "../../assets/images/homeHeroSection/arrowRectangleWhite.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import NudgeCard from "../nudgeCard/nudgeCard";
+import Pattern from '../../assets/images/homeHeroSection/Patterns.svg'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css"
 
 const homeHeroSection = (props) => {
   const data = {
     rewardPoint: 12381,
   };
-  const settings = {
-    dots: false,
-    infinite: false,
-    fade: false,
-    speed: 500,
-    slidesToShow: 1.35,
-    slidesToScroll: 1,
-    lazyLoad: true,
-    arrows: false,
-    className: "swiper",
-    responsive: [
-      {
-        breakpoint: 460,
-        settings: {
-          slidesToShow: 1.25,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 420,
-        settings: {
-          slidesToShow: 1.15,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 390,
-        settings: {
-          slidesToShow: 1.1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 330,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-    // beforeChange: (o, n) => {
-    //   setCurrentSlide(n);
-    // },
-  };
+
+
+
 
   return (
     <>
       <div className="heroSection">
+
+        <div className='Pattern'>
+            <img src={Pattern} alt="Pattern"/>
+        </div>
+
         <div className="heroSection-top">
           <div className="heroSection-top-container">
             <div className="rewardPoint-container">
@@ -73,58 +39,6 @@ const homeHeroSection = (props) => {
                 <img src={arrowCircle} alt="arrowCircle" />
               </div>
             </div>
-
-            {/* <div className='heroSection-body'>
-                <div className='card-container'>
-                    <div className='your-card-button'>
-                        
-                        <div className='your-text'>
-                            your
-                        </div>
-
-                        <div className='card-text'>
-                            card
-                        </div>
-
-                        <div className='arrowRectangle'>
-                            <img src={arrowRectangle} alt='arr'/>
-                        </div>
-
-                    </div>
-                    <img src={card} className='card' alt='card'/>
-                </div>
-
-                <div className='divider-design'>
-                    <img src={divider} alt='divider'/>
-                </div>
-
-                <div className='carouselAndViewbutton'>
-                        <div className='carousel-card'>
-                            [ Place holder for carousel ]
-                        </div>
-
-                        <div className='view-all-container'>
-                            <div className='view-all-button'>
-                                    <div className='view-text'> 
-                                        view
-                                    </div>
-
-                                    <div className='all-text'>
-                                        all
-                                    </div>
-
-                                    <div className='arrowRectangleWhite'>
-                                        <img src={arrowRectangleWhite} alt='arr'/>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div className='lineDivider'>
-                            <div className='line'/>
-                        </div>
-                </div>
-                
-            </div> */}
 
             <div className="rewardPoint-name">Reward Points</div>
           </div>
@@ -149,17 +63,22 @@ const homeHeroSection = (props) => {
           </div>
 
           <div className="carouselAndViewbutton">
-            <div>
-              <div style={{ marginLeft: "0px" }}>
-                <Slider {...settings}>
-                  {props.nudges.map((item, index) => (
-                    <div>
-                      <NudgeCard data={item} />
-                    </div>
+                <Swiper
+                slidesPerView={'auto'}
+                spaceBetween={30}
+
+                className="nudgeSwiper">
+                  {props.nudges.map((data, index) => (
+                    <SwiperSlide key={index}>
+                      <NudgeCard data={data} />
+                    </SwiperSlide>
                   ))}
-                </Slider>
-              </div>
-            </div>
+                </Swiper>
+
+          </div>
+
+
+          </div>
 
             <div className="view-all-container" onClick={() => props.click()}>
               <div className="view-all-button">
@@ -173,11 +92,9 @@ const homeHeroSection = (props) => {
               </div>
             </div>
           </div>
-        </div>
         <div className="divider-container">
           <div className="divider"></div>
         </div>
-      </div>
     </>
   );
 };

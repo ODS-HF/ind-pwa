@@ -4,7 +4,7 @@ import Header from "../../components/header/header";
 import HomeHeroSection from "../../components/homeHeroSection/homeHeroSection";
 import LoginPopup from "../../components/loginPopup/loginPopup";
 import OtpComponent from "../../components/otpComponent/otpComponent";
-
+  
 import HomeFooterSection from "../../components/homeFooterSection/homeFooterSection";
 import Loader from "../../components/loader/loader";
 import MainService from "../../services/MainService";
