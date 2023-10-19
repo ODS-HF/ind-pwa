@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./swiper.css";
+import "./customSwiper.css";
 import {
   CarouselItem2,
   CarouselItem1,
@@ -44,15 +44,17 @@ const CustomSwiper = () => {
     slidesToScroll: 1,
     lazyLoad: true,
     arrows: false,
-    className: "swiper",
+    className: "customSwiper",
     beforeChange: (o, n) => {
       setCurrentSlide(n);
     },
   };
 
+
+
   const [currentSlide, setCurrentSlide] = useState(0);
   return (
-    <div className="swiper-main-container" on={(e) => console.log(e)}>
+    <div className="customSwiper-main-container" on={(e) => console.log(e)}>
       <Slider {...settings}>
         <CarouselItem1 />
         <CarouselItem2 />

@@ -1,11 +1,10 @@
 import "./campaignCard.css";
 import campaignCardBackground from "../../assets/images/campaigncard/CampaignCardBg.svg";
 import Progressbar from "../../assets/images/campaigncard/progressbar.png";
-import moment from "moment";
+import * as dayjs from 'dayjs'
 import { formatString, truncate } from "../../utils/functions";
 
 const CampaignCard = (props) => {
-  console.log(moment(props?.data?.benefitExpiry).diff(moment(), "d"));
   return (
     <div className="campaigncard-wrapper">
       <div
@@ -16,12 +15,10 @@ const CampaignCard = (props) => {
         }}
       >
         <div className="campaignCard-top-dtg-wrapper">
-          <div className="campaignCard-top-dtg">{`${moment(
-            props?.data?.benefitExpiry
-          ).diff(moment(), "d")} days left`}</div>
+          <div className="campaignCard-top-dtg">{`${dayjs(props?.data?.benefitExpiry).diff(dayjs(), "day")} days left`}</div>
         </div>
         <div className="campaignCard-progress-wrapper">
-          <img src={Progressbar} className="campaignCard-progress" />
+          <img src={props?.data?.illustrationUrl || Progressbar} className="campaignCard-progress" />
         </div>
         <div className="campaignCard-btn-wrapper">
           <div className="campaignCard-btn">{`₹${
@@ -36,7 +33,7 @@ const CampaignCard = (props) => {
               "Get ₹200 cashback"}
           </h1>
           <h2 className="campaignCard-text-sub">
-            {truncate(formatString(props?.data?.displayDescription), 28) ||
+            {truncate(formatString(props?.data?.displayDescription), window.innerWidth >410 ? 28 : 20) ||
               "on completing offline transactions worth ₹2000"}
           </h2>
         </div>

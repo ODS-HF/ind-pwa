@@ -1,7 +1,9 @@
 import "./nudgeCard.css";
 import Progress from "../../assets/images/nudgecard/Progress states.png";
 import btnImg from "../../assets/images/nudgecard/blackArrow.svg";
-import moment from "moment";
+import * as dayjs from 'dayjs'
+import { formatString, truncate } from "../../utils/functions";
+
 
 const NudgeCard = (props) => {
   return (
@@ -12,7 +14,7 @@ const NudgeCard = (props) => {
             src={
               props?.data?.displayOptions?.nudgeDetails
                 ? JSON.parse(props?.data?.displayOptions?.nudgeDetails)
-                    ?.illustrationUrl
+                    ?.illustrationUrl || Progress
                 : Progress
             }
             height={"48px"}
@@ -22,20 +24,23 @@ const NudgeCard = (props) => {
         </div>
         <div className="nudgeCard-text-content">
           <h1 className="nudgeCard-main-content">
-            {props?.data?.displayOptions?.nudgeDetails
+          {truncate(formatString(props?.data?.displayOptions?.nudgeDetails
               ? JSON.parse(props?.data?.displayOptions?.nudgeDetails)?.title
-              : "Spend Statement, May 2023"}
+              : "Spend Statement, May 2023"), window.innerWidth > 445 ? 30 : window.innerWidth > 405 ?  25 : window.innerWidth > 390 ? 20 : 16) ||
+              "Get ₹200 cashback"}
+
           </h1>
           <div className="nudgeCard-sub-content">
             <p className="nudgeCard-p1">
-              {props?.data?.displayOptions?.nudgeDetails
+            {truncate(formatString(props?.data?.displayOptions?.nudgeDetails
                 ? JSON.parse(props?.data?.displayOptions?.nudgeDetails)
                     ?.description
-                : "Win 400 cashback"}
+                : "Win 400 cashback"), 40) ||
+              "Get ₹200 cashback"}
             </p>
 
-            {moment(props?.data?.endDate).diff(moment(), "d") < 5 &&
-              moment(props?.data?.endDate).diff(moment(), "d") >= 0 && (
+            {dayjs(props?.data?.endDate).diff(dayjs(), "d") < 5 &&
+              dayjs(props?.data?.endDate).diff(dayjs(), "d") >= 0 && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="2"
@@ -46,11 +51,11 @@ const NudgeCard = (props) => {
                   <circle cx="1" cy="1.32416" r="1" fill="#D9D9D9" />
                 </svg>
               )}
-            {moment(props?.data?.endDate).diff(moment(), "d") < 5 &&
-              moment(props?.data?.endDate).diff(moment(), "d") >= 0 && (
-                <p className="nudgeCard-p2">{`${moment(
+            {dayjs(props?.data?.endDate).diff(dayjs(), "d") < 5 &&
+              dayjs(props?.data?.endDate).diff(dayjs(), "d") >= 0 && (
+                <p className="nudgeCard-p2">{`${dayjs(
                   props?.data?.endDate
-                ).diff(moment(), "d")}d left`}</p>
+                ).diff(dayjs(), "d")}d left`}</p>
               )}
           </div>
         </div>

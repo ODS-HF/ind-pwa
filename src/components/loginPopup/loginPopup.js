@@ -39,7 +39,7 @@ const LoginPopup = (props) => {
     gap: "32px",
 
     position: "absolute",
-    bottom: props.show ? -0 : -360,
+    bottom: props.show ? 0 : -365,
     width: "100%",
     boxSizing: "border-box",
     borderRadius: "24px",

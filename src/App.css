@@ -23,3 +23,10 @@
   --toastify-color-light: #fff;
   --toastify-color-dark: #000000;
 }
+
+.input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color:rgb(23, 23, 24)!important;
+  color: fieldtext !important;
+}

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./login.css";
 import arrow from "../../assets/images/login/btn-arrow.svg";
-import Swiper from "../../components/swiper/swiper";
+import Swiper from "../../components/swiper/customSwiper";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/loader/loader";
 import MainService from "../../services/MainService";
 import { useNavigate } from "react-router-dom";
-import { verify } from "../../services/verifyOtp";
 import LoginPopup from "../../components/loginPopup/loginPopup";
 import OtpComponent from "../../components/otpComponent/otpComponent";
 
@@ -25,7 +24,7 @@ const Login = () => {
     setLoginVisiblity(!loginVisiblity);
   };
   const loginPopupStyle = {
-    visibility: loginVisiblity ? "visible" : "vissible",
+    visibility: loginVisiblity ? "visible" : "visible",
   };
 
   const otpGenerate = async () => {
@@ -137,6 +136,7 @@ const Login = () => {
         <div className="login-top-container">
           <>
             <div
+            style={{opacity:loginVisiblity || otpComponentShow ? "0.4" : "1"}}
               className="login-carousel"
               onClick={() => {
                 setLoginVisiblity(false);
@@ -194,6 +194,9 @@ const Login = () => {
                 setOtp={setOtp}
                 loading={loading}
                 show={otpComponentShow}
+                setShow={setOtpComponentShow}
+                prevShow={loginVisiblity}
+                setPrevShow={setLoginVisiblity}
               />
             </div>
           )}
