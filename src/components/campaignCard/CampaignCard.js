@@ -3,6 +3,7 @@ import campaignCardBackground from "../../assets/images/campaigncard/CampaignCar
 import Progressbar from "../../assets/images/campaigncard/progressbar.png";
 import * as dayjs from 'dayjs'
 import { formatString, truncate } from "../../utils/functions";
+import CircleProgress from "../../utils/svg/circleProgress";
 
 const CampaignCard = (props) => {
   return (
@@ -18,6 +19,10 @@ const CampaignCard = (props) => {
           <div className="campaignCard-top-dtg">{`${dayjs(props?.data?.benefitExpiry).diff(dayjs(), "day")} days left`}</div>
         </div>
         <div className="campaignCard-progress-wrapper">
+
+        <div style={{position:"absolute", marginTop: "4px"}}>
+        <CircleProgress percent={(Math.random() * (1 - 0)) + 0}/ ></div>
+
           <img src={props?.data?.illustrationUrl || Progressbar} className="campaignCard-progress" />
         </div>
         <div className="campaignCard-btn-wrapper">
