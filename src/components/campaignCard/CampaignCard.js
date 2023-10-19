@@ -19,8 +19,10 @@ const CampaignCard = (props) => {
           <div className="campaignCard-top-dtg">{`${dayjs(props?.data?.benefitExpiry).diff(dayjs(), "day")} days left`}</div>
         </div>
         <div className="campaignCard-progress-wrapper">
+
         <div style={{position:"absolute", marginTop: "4px"}}>
         <CircleProgress percent={(Math.random() * (1 - 0)) + 0}/ ></div>
+
           <img src={props?.data?.illustrationUrl || Progressbar} className="campaignCard-progress" />
         </div>
         <div className="campaignCard-btn-wrapper">
